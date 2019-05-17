@@ -7,14 +7,14 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col sizeMd="6">
+      <ion-col sizeMd="6" offsetMd="3">
   <ion-card>
     <ion-card-header>
       Enter your search
   </ion-card-header>
     <ion-card-content padding>
     <ion-item>
-<ion-input type="text" required placeholder="You're the worst" color="primary" clearInput></ion-input>
+<ion-input type="text" required placeholder="You're the worst" color="primary" clearInput [(ngModel)]="query"></ion-input>
       <ion-button color="success" shape="round" (click)="onSearch()">Search
       <ion-icon name="bowtie">
 
