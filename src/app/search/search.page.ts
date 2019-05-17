@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {ResultsComponent} from './results/results.component';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +16,7 @@ export class SearchPage {
 
     async onSearch() {
       const modal = await this.modalController.create({
-        component: SearchPage
+        component: ResultsComponent
       });
       return await modal.present();
     }
