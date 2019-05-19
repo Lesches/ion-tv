@@ -1,3 +1,30 @@
-<p>
-  results works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="onClose()">
+        <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let show of shows" >
+
+      <ion-label>
+        <ion-list-header>{{show.name}}</ion-list-header>
+        <ion-item>{{show.premiered}}</ion-item>
+        <ion-item>{{show.status}}</ion-item>
+        <ion-thumbnail slot="end">
+        <ion-img [src]="show.image" height="100" width="100"></ion-img>
+        </ion-thumbnail>
+      </ion-label>
+
+
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+

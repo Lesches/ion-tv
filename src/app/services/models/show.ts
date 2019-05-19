@@ -23,7 +23,7 @@ export class Show {
             this.premiered = a.premiered;
             this.runtime = a.runtime;
             this.summary = a.summary;
-            this.image = (a.image) ? a.image.original : null;
+            this.image = (a.image) ? a.image.original : 'http://static.tvmaze.com/uploads/images/original_untouched/186/465396.jpg';
             if (this.image) {
                 this.image = 'https' + this.image.substring(4);
             }
