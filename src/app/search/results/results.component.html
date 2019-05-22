@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let show of shows" routerLink="/details/{{show.id}}">
+    <ion-item *ngFor="let show of shows" routerLink="/details/{{show.id}}" (click)="onClose()">
       <ion-avatar slot="start">
         <img src="{{show.image}}" alt="N/A">
       </ion-avatar>
