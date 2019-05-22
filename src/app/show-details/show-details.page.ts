@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Show} from '../services/models/show';
 import {TvmazeService} from '../services/models/tvmaze.service';
 import {ActivatedRoute} from '@angular/router';
+import {Episode} from '../services/models/episode';
 
 @Component({
   selector: 'app-show-details',
@@ -9,8 +10,9 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./show-details.page.scss'],
 })
 export class ShowDetailsPage {
-show: Show;
-sid: string;
+  show: Show;
+  sid: string;
+
   constructor(public tvmaze: TvmazeService, public route: ActivatedRoute) {
     this.route.paramMap.subscribe(pm => pm.get('sid'));
     this.fetchShow();
@@ -18,8 +20,12 @@ sid: string;
 
   fetchShow(): void {
     this.tvmaze.fetchShow(this.sid).subscribe(resultingShow => {
-      this.show = resultingShow;
-    });
-  }
+          this.show = resultingShow;
+          this.tvmaze.fetchEpisodes(this.show.id).subscribe((episodes: Episode[]) => {
+            this.show.addEpisodes(episodes);
 
+          });
+        }
+    );
+  }
 }
