@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button color="primary" (click)="onClose()">
+      <ion-button color="danger" (click)="onClose()">
         <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -12,17 +12,21 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let show of shows" >
+      <ion-avatar slot="start">
+        <img src="{{show.image}}" alt="N/A">
+      </ion-avatar>
 
       <ion-label>
-        <ion-list-header>{{show.name}}</ion-list-header>
-        <ion-item>{{show.premiered}}</ion-item>
-        <ion-item>{{show.status}}</ion-item>
-        <ion-thumbnail slot="end">
-        <ion-img [src]="show.image" height="100" width="100"></ion-img>
-        </ion-thumbnail>
+        <ion-text color="primary"><h2>{{show.name}}</h2></ion-text>
+        <ion-text color="secondary">
+          <p>
+            <span *ngIf="show.status">{{show.status}}</span>
+        <span *ngIf="show.status  && show.premiered"> | </span>
+            <span *ngIf=" show.premiered">Aired: <strong>{{show.premiered | date}}</strong></span>
+          </p>
+        </ion-text>
+        <p [innerHTML]="show.summary"></p>
       </ion-label>
-
-
     </ion-item>
   </ion-list>
 </ion-content>
