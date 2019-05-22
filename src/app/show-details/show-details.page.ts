@@ -8,13 +8,18 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './show-details.page.html',
   styleUrls: ['./show-details.page.scss'],
 })
-export class ShowDetailsPage implements OnInit {
+export class ShowDetailsPage {
 show: Show;
-sid: number;
+sid: string;
   constructor(public tvmaze: TvmazeService, public route: ActivatedRoute) {
     this.route.paramMap.subscribe(pm => pm.get('sid'));
+    this.fetchShow();
   }
-  ngOnInit() {
+
+  fetchShow(): void {
+    this.tvmaze.fetchShow(this.sid).subscribe(resultingShow => {
+      this.show = resultingShow;
+    });
   }
 
 }
