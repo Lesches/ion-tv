@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Show} from '../services/models/show';
+import {TvmazeService} from '../services/models/tvmaze.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-show-details',
@@ -6,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show-details.page.scss'],
 })
 export class ShowDetailsPage implements OnInit {
-
-  constructor() { }
-
+show: Show;
+sid: number;
+  constructor(public tvmaze: TvmazeService, public route: ActivatedRoute) {
+    this.route.paramMap.subscribe(pm => pm.get('sid'));
+  }
   ngOnInit() {
   }
 
